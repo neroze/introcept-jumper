@@ -18,5 +18,4 @@ deploy:
   run:
     - "cp .env.travis .env"
     - "php artisan config:clear"
-    - "php artisan key:generate"
     - "chmod -R 777 app/storage"
