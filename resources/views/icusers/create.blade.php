@@ -1,6 +1,6 @@
 @extends('layouts.default.index')
 @section('content')
-<div class="container" id="app">
+<div id="app">
 	@include('blocks.dev')
 	<div class="row">
 	<a href="/manage" class="btn btn-primary" >View All IC Users</a>

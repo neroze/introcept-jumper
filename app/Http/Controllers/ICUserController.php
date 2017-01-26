@@ -126,8 +126,9 @@ class ICUserController extends Controller
     public function destroy($id, ICUserList $users, ICUserExport $icuUserExport)
     {
         $store = $users->all()->toArray();
+        $removed_user = $store[$id][""]." ( ".$store[$id][3]." ) ";
         unset($store[$id]);
 
-        return $this->icuser->deleteICUser($store, $icuUserExport);
+        return $this->icuser->deleteICUser($store, $icuUserExport,$removed_user);
     }
 }

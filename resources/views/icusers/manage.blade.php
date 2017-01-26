@@ -1,6 +1,6 @@
 @extends('layouts.default.index')
 @section('content')
-<div class="container" id="manage">
+<div id="manage">
 	@include('blocks.dev')
 	<div class="row">
 		<a href="/icusers/create" class="btn btn-primary pull-right" >Add New IC User</a>	<br>

@@ -5,9 +5,20 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Validator;
 use App\Helpers\JResponse;
+use App\Helpers\Jlog;
 
 class ICUser extends Model
 {
+  /**
+   * undocumented class variable
+   *
+   * @var string
+   **/
+  public $log;
+  public function __construct(Jlog $log)
+  {
+    $this->log = $log;
+  }
 	/**
 	 * Basic Validation for IC User Schema
 	 *
@@ -58,7 +69,8 @@ class ICUser extends Model
 			$icuUserExport->sheet('userList', function($sheet) use($store) {
 	        $sheet->fromArray($store);
 	    })->store('csv');
-
+      //push logentires
+      $this->log->info("User ".$data['name']." ( ".$data['email']." ) Created Successfully!");
       return JResponse::data($data);
   	}
   }
@@ -71,14 +83,14 @@ class ICUser extends Model
    * @param   $store App\Repo\ICUserList;
    * @author 
    **/
-  public function deleteICUser($store = [], $icuUserExport)
+  public function deleteICUser($store = [], $icuUserExport,$removed_user)
   {
   		$icuUserExport->sheet('userList', function($sheet) use($store) {
 	        $sheet->fromArray($store);
 	    })->store('csv');
-
+       //push logentires
+      $this->log->info("User ".$removed_user." Removed Successfully!");
 	    return JResponse::data();
-  	
   }
     
 }

@@ -1,9 +1,18 @@
-var J = require('../jumper/lib.js');
+import J from '../jumper/lib.js';
 import JAlert from '../jumper/alert';
-
+/**
+ * Importing date-picker component
+ */
 J.Vue.component('date-picker', require('../../components/date_picker.vue'));
+/**
+ * Defining User Module Object
+ * @type Object
+ */
 var User = {};
-
+/**
+ * Method to register inital data process or any event
+ * 
+ */
 User.init = function() {
     const _users = $("#users").val();
     if (_users != '') {
@@ -11,8 +20,12 @@ User.init = function() {
         console.log(typeof this.users);
     }
 }
-
-User.delete_user = function(e, _userIndex, _user) {
+/**
+ * Delete User API 
+ * @param  Event e  Native Click Event Object
+ * @param  Int _userIndex row id of user ( row index from CSV eg: 1 line == 0 2 line ==1 )
+ */
+User.delete_user = function(e, _userIndex) {
     e.preventDefault();
     this.$http.delete('/icusers/' + _userIndex).then((resp) => {
         if (resp.data.stat == 'ok') {
@@ -24,14 +37,19 @@ User.delete_user = function(e, _userIndex, _user) {
         JAlert.success("Sorry there was some unexpected error.");
     });
 }
-
+/**
+ * creating new Vue Class for manage IC users manage panel
+ */
 new J.Vue({
+    // DOM Element to mount
     el: '#manage',
     data: {
+        // initial users empty store
         users: []
     },
     mounted: function() {
+        // call init API
         this.init();
     },
-    methods: User
+    methods: User // assign User Object to mothods
 });

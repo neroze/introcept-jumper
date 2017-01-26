@@ -8,34 +8,42 @@
 </template>
 
 <script>
-
+/**
+ * Creating Date Picker Compenent
+ * @type {Object}
+ */
 const DatePicker = {
     data: function() {
         return {
             dateField: null
         }
     },
-    props: ['name','init_data'],
-    methods:{
-        date_picked:function(_Date){
+    // Componet properties
+    props: ['name', 'init_data'],
+    methods: {
+        date_picked: function(_Date) {
+            // fire date picked event to lisiten by parent module
             this.$emit('date_picked', _Date);
         }
     },
     mounted: function() {
+        // protecting root context
         var self = this;
         let _init_data = this.init_data || moment().format('DD/MM/YYYY');
-        $('#'+this.name).daterangepicker({
+        // init date range picker extenstion
+        $('#' + this.name).daterangepicker({
             singleDatePicker: true,
             calender_style: "picker_2",
-            startDate:_init_data,
+            startDate: _init_data,
             locale: {
-                        format: 'DD/MM/YYYY'
-                    }
+                format: 'DD/MM/YYYY'
+            }
         }, (start) => {
-            this.date_picked(start.format('DD/MM/YYYY') );
+            // call date picked API
+            this.date_picked(start.format('DD/MM/YYYY'));
         });
     }
 }
-
-    export default DatePicker
+// ES5 export Object
+export default DatePicker
 </script>

@@ -6,10 +6,23 @@
  */
 
 require('./bootstrap');
-
+/**
+ * set current url location
+ * 
+ */
 var _location = location.href;
+/**
+ * Routes not implemented yet so just auto loading 
+ * Vue moules as per required for respective panels
+ */
 if(_location.search('icuser') > 0){
+	/**
+	 * Loading icuse moudle 
+	 */
 	require('./app/icuser/icuser.js');
 }else if(_location.search('manage') > 0){
+	/**
+	 * Loading icuse manage moudle 
+	 */
 	require('./app/icuser/manage.js');
 }

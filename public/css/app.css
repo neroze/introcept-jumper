@@ -7688,4 +7688,11 @@ button.close {
   }
 }
 
+#loading {
+  width: 200px;
+  margin: 0 auto;
+  padding-top: 100px;
+  text-align: center;
+}
+
 /*# sourceMappingURL=app.css.map */
