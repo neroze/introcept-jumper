@@ -16,10 +16,4 @@ deploy:
   api_key:
     secure: BmjzlEPdiddsNxq+2iuuLtKqIjX0SJ6geGUKLXoFC7YObP9PEIkCG5ePC+PMp+Liu041/ofViJWS9KXRAx27O+LsTC1Oh4/mx0WKoLC/R2gkLthV4wXxsRV64UCvn0AIggAXZc800+Y11SKd3y99dEDmR4/DhR1tpIHjC/0punwQMvFiGUq6IPfX2qDDpUxV50I37CS2qsEl32JSYbN0nTgTR0tJQrDhqaWoLnxd0/w2xgrhMG5CDibEW4nCLp7pa61Gwp9oHtTY+mEOwrhTcI0b79oeNWi5PlKouizLveXaJlhQjTfDxvJ53JsTfZw2JXiLuqqu/2q43I5LZTTmh+zwj/jdvYhl9dU29ifjBrLgdnA8dIhknLGsep2ezB9/FE/RCNsLoqzlSUhemVwt5Xn1pmVL3OfU4P+PFCkianAUeDWXhOMwH4N/bkqKwA2njCTAMrIp1ynR+W/0tbFcThKfLPY7NlYmucxXEURVMQljvMBJFFall9xJaaByUqAYi9UAOQtC5cVzQlLrGlD4Mqy0Xq4y3SECMHO7cNl7hLWcm+omUx4Nu/JdLHGyvUaqEpmswIvImv6K4+HkxSJhPqIotKk7RSCd1eAVvbosAjJDRWmDUUCEyp6KTVhEpzFlrsj6BlHDV7IvhH08MM0Z2ach+C+UGYboMLqLJ/Culow=
   run:
-    - "cp .env.example .env"
-    - "cp .env.example ../.env"
-    - "php artisan config:clear"
-    - "php artisan cache:clear"
-    - "php artisan key:generate"
-    - "chmod -R 777 app/storage"
-    - "ls"
+    - "ls -a"
