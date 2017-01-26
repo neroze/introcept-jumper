@@ -3,8 +3,9 @@
 <div id="manage">
 	@include('blocks.dev')
 	<div class="row">
-		<a href="/icusers/create" class="btn btn-primary pull-right" >Add New IC User</a>	<br>
+		<a href="/icusers/create" class="btn btn-primary pull-right" >Add New IC User</a>
 	</div>
+	<br>
 	<div class="row">
 			<div class="panel panel-default">
 			  <div class="panel-heading">
