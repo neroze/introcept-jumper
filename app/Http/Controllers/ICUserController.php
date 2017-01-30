@@ -19,13 +19,21 @@ class ICUserController extends Controller
     private $icuser;
 
     /**
+     * Object for JResponse helper class
+     *
+     * @var JResponse
+     **/
+    private $jResponse;
+
+    /**
      * Constructor.
      *
      * @param \App\ICUser $icuser
      **/
-    public function __construct(\App\ICUser $icuser)
+    public function __construct(\App\ICUser $icuser, JResponse $jResponse)
     {
         $this->icuser = $icuser;
+        $this->jResponse = $jResponse;
     }
 
     public function manage(ICUserList $users)
@@ -52,7 +60,7 @@ class ICUserController extends Controller
      */
     public function index(ICUserList $users)
     {
-        return JResponse::data($users->all()->toArray());
+        return $this->jResponse->data($users->all()->toArray());
     }
 
     /**
@@ -75,7 +83,6 @@ class ICUserController extends Controller
     public function store(Request $request, ICUserList $users, ICUserExport $icuUserExport)
     {
         $store = $users->all()->toArray();
-
         return $this->icuser->saveICUser($request->all(), $store, $icuUserExport);
     }
 
@@ -86,7 +93,7 @@ class ICUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($icUserid)
     {
         //
     }
@@ -98,7 +105,7 @@ class ICUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($icUserid)
     {
         //
     }
@@ -111,7 +118,7 @@ class ICUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $icUserid)
     {
         //
     }
@@ -123,12 +130,12 @@ class ICUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, ICUserList $users, ICUserExport $icuUserExport)
+    public function destroy($icUserIndex, ICUserList $users, ICUserExport $icuUserExport)
     {
         $store = $users->all()->toArray();
-        $removed_user = $store[$id][""]." ( ".$store[$id][3]." ) ";
-        unset($store[$id]);
+        $removedUser = $store[$icUserIndex][""]." ( ".$store[$icUserIndex][3]." ) ";
+        unset($store[$icUserIndex]);
 
-        return $this->icuser->deleteICUser($store, $icuUserExport,$removed_user);
+        return $this->icuser->deleteICUser($store, $icuUserExport,$removedUser);
     }
 }

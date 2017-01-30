@@ -1,17 +1,23 @@
 <?php
 namespace App\Helpers;
+// php native require logentries file
+require 'le_php-master/logentries.php';
+// setting global variable 
+$GLOBALS['log'] = $log;
+
 /**
  * Wrapper for Logentries Class
  *
  * @package Jlog 
  * @author Jumper
  **/
-require 'le_php-master/logentries.php';
-$GLOBALS['log'] = $log;
-//$log->Info("Init test");
-
 class Jlog
 {
+	/**
+	 * Private logentries object
+	 *
+	 * @var string
+	 **/
 	public $log;
 	public function __construct()
 	{

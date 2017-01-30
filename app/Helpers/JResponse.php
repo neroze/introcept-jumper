@@ -11,7 +11,7 @@ class JResponse
 	 * @param  string $message message to set as any error for error response
 	 * @return Array formated error response
 	 */
-	public static function error($message='')
+	public function error($message='')
 	{
 		return array('stat'=> 'error' , "message" => $message);
 	}
@@ -20,7 +20,7 @@ class JResponse
 	 * @param  string $date Date to set for any success response
 	 * @return Array formated success response
 	 */
-	public static function data($data='')
+	public function data($data='')
 	{
 		// if there is data to be set for success response
 		if($data){

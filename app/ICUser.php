@@ -15,9 +15,17 @@ class ICUser extends Model
    * @var string
    **/
   public $log;
-  public function __construct(Jlog $log)
+ /**
+   * Object for JResponse helper class
+   *
+   * @var JResponse
+   **/
+  private $jResponse;
+
+  public function __construct(Jlog $log, JResponse $jResponse)
   {
     $this->log = $log;
+    $this->jResponse = $jResponse;
   }
 	/**
 	 * Basic Validation for IC User Schema
@@ -61,7 +69,7 @@ class ICUser extends Model
   {
   	$valdiate = $this->validate($data, $this->rules());
   	if($valdiate->fails()){
-      return JResponse::error($valdiate->errors()->all());
+      return $this->jResponse->error($valdiate->errors()->all());
     }
 
   	if($data){
@@ -71,7 +79,7 @@ class ICUser extends Model
 	    })->store('csv');
       //push logentires
       $this->log->info("User ".$data['name']." ( ".$data['email']." ) Created Successfully!");
-      return JResponse::data($data);
+      return $this->jResponse->data($data);
   	}
   }
 
@@ -90,7 +98,7 @@ class ICUser extends Model
 	    })->store('csv');
        //push logentires
       $this->log->info("User ".$removed_user." Removed Successfully!");
-	    return JResponse::data();
+	    return $this->jResponse->data();
   }
     
 }
