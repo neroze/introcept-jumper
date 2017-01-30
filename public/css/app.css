@@ -7695,4 +7695,14 @@ button.close {
   text-align: center;
 }
 
+.bg-info {
+  background-color: #d9edf7;
+  margin: 3px 0;
+  padding: 4px;
+}
+
+.bg-info div.col-md-3 {
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=app.css.map */

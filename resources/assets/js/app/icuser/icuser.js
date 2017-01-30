@@ -1,4 +1,4 @@
-import J from '../jumper/lib.js';
+import J from '../jumper/core.js';
 import JAlert from '../jumper/alert';
 J.Vue.component('date-picker', require('../../components/date_picker.vue'));
 var User = {};

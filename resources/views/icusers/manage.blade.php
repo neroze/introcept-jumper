@@ -41,7 +41,10 @@
 				  			<td>@{{ user['7'] }}</td>
 				  			<td>@{{ user['8'] }}</td>
 				  			<td>
-									<a @click="delete_user($event, index)" class="btn btn-default" data-loading-text="..." href="#">
+									<a title="View Detail" @click="view_details($event, user)" class="btn btn-default" data-loading-text="..." href="">
+										<i class="glyphicon glyphicon-modal-window text-primary"></i>
+									</a>
+									<a title="Delete" @click="delete_user($event, index)" class="btn btn-default" data-loading-text="..." href="">
 										<i class="glyphicon glyphicon-remove text-danger"></i>
 									</a>
 				  			</td>
@@ -53,5 +56,7 @@
 			</div>
 	{{ $allUsersPagination }}
 	</div>
+	@include('icusers.view')
 </div>
+
 @stop
