@@ -15,7 +15,7 @@ var User = {};
  */
 User.init = function() {
     const _users = $("#users").val();
-    if (_users != '') {
+    if (_users !== '') {
         this.users = $.parseJSON(_users).data;
         console.log(typeof this.users);
     }
@@ -28,7 +28,7 @@ User.init = function() {
 User.delete_user = function(e, _userIndex) {
     e.preventDefault();
     this.$http.delete('/icusers/' + _userIndex).then((resp) => {
-        if (resp.data.stat == 'ok') {
+        if (resp.data.stat === 'ok') {
             JAlert.success("User Removed");
             delete(this.users[_userIndex]);
             this.users = Object.assign({},this.users);

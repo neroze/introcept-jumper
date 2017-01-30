@@ -41,7 +41,7 @@
 				  			<td>@{{ user['7'] }}</td>
 				  			<td>@{{ user['8'] }}</td>
 				  			<td>
-									<a @click="delete_user($event, index)" href="#">
+									<a @click="delete_user($event, index)" class="btn btn-default" data-loading-text="..." href="#">
 										<i class="glyphicon glyphicon-remove text-danger"></i>
 									</a>
 				  			</td>

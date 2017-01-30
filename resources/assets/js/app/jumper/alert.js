@@ -3,7 +3,7 @@ import toastr from 'toastr';
  * Title for the notification widget
  * @type String
  */
-const alertTitle = "Pine Tree";
+const alertTitle = "Intro Cept";
 
 /**
  * toaster plugin configuration

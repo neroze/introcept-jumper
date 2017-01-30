@@ -27,7 +27,7 @@ User.init = function() {}
  */
 User.save_user = function(_user) {
     this.$http.post('/icusers', _user).then((resp) => {
-        if (resp.data.stat == 'ok') {
+        if (resp.data.stat === 'ok') {
             this.recently_added_users.push(Object.assign({}, this.user));
             J.reset(this.user);
             //setting default value
