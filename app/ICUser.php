@@ -9,7 +9,7 @@ use App\Helpers\Jlog;
 
 class ICUser extends Model
 {
-  /**
+    /**
    * undocumented class variable
    *
    * @var string
@@ -22,31 +22,31 @@ class ICUser extends Model
    **/
   private $jResponse;
 
-  public function __construct(Jlog $log, JResponse $jResponse)
-  {
-    $this->log = $log;
-    $this->jResponse = $jResponse;
-  }
-	/**
-	 * Basic Validation for IC User Schema
-	 *
-	 * @return Boolen
-	 * @author jumper
-	 **/
-	public function validate(array $data, $rules)
-  {
-	     return Validator::make($data, $rules);
-  }
-	/**
-	 * Validation Rules for creating new IC user
-	 *
-	 * @return Array 
-	 * @author Jumper
-	 **/
+    public function __construct(Jlog $log, JResponse $jResponse)
+    {
+        $this->log = $log;
+        $this->jResponse = $jResponse;
+    }
+    /**
+     * Basic Validation for IC User Schema
+     *
+     * @return Boolen
+     * @author jumper
+     **/
+    public function validate(array $data, $rules)
+    {
+        return Validator::make($data, $rules);
+    }
+    /**
+     * Validation Rules for creating new IC user
+     *
+     * @return Array
+     * @author Jumper
+     **/
 
-	public function rules()
-  {
-      return [
+    public function rules()
+    {
+        return [
           'name' => 'required',
           'gender' => 'required',
           'email' => 'required|email',
@@ -57,30 +57,30 @@ class ICUser extends Model
           'education_background' => 'required',
           'mode_of_contact' => 'required'
       ];
-  }
+    }
 
   /**
    * Create New IC User
    *
    * @return void
-   * @author 
+   * @author
    **/
-  public function saveICUser($data='', $store = [],$icuUserExport)
+  public function saveICUser($data='', $store = [], $icuUserExport)
   {
-  	$valdiate = $this->validate($data, $this->rules());
-  	if($valdiate->fails()){
-      return $this->jResponse->error($valdiate->errors()->all());
-    }
+      $valdiate = $this->validate($data, $this->rules());
+      if ($valdiate->fails()) {
+          return $this->jResponse->error($valdiate->errors()->all());
+      }
 
-  	if($data){
-			array_push($store, $data);
-			$icuUserExport->sheet('userList', function($sheet) use($store) {
-	        $sheet->fromArray($store);
-	    })->store('csv');
+      if ($data) {
+          array_push($store, $data);
+          $icuUserExport->sheet('userList', function ($sheet) use ($store) {
+              $sheet->fromArray($store);
+          })->store('csv');
       //push logentires
       $this->log->info("User ".$data['name']." ( ".$data['email']." ) Created Successfully!");
-      return $this->jResponse->data($data);
-  	}
+          return $this->jResponse->data($data);
+      }
   }
 
   /**
@@ -89,16 +89,15 @@ class ICUser extends Model
    * @return Boolen
    * @param   $index Inteter
    * @param   $store App\Repo\ICUserList;
-   * @author 
+   * @author
    **/
-  public function deleteICUser($store = [], $icuUserExport,$removed_user)
+  public function deleteICUser($store = [], $icuUserExport, $removed_user)
   {
-  		$icuUserExport->sheet('userList', function($sheet) use($store) {
-	        $sheet->fromArray($store);
-	    })->store('csv');
+      $icuUserExport->sheet('userList', function ($sheet) use ($store) {
+          $sheet->fromArray($store);
+      })->store('csv');
        //push logentires
       $this->log->info("User ".$removed_user." Removed Successfully!");
-	    return $this->jResponse->data();
+      return $this->jResponse->data();
   }
-    
 }

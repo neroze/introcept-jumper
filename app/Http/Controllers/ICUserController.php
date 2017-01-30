@@ -136,6 +136,6 @@ class ICUserController extends Controller
         $removedUser = $store[$icUserIndex][""]." ( ".$store[$icUserIndex][3]." ) ";
         unset($store[$icUserIndex]);
 
-        return $this->icuser->deleteICUser($store, $icuUserExport,$removedUser);
+        return $this->icuser->deleteICUser($store, $icuUserExport, $removedUser);
     }
 }
